@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add New Student</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+</head>
+<body>
+
+    <h2>Add New Student</h2>
+
+    <form th:object="${newStudent}" th:action="@{/add}" method="post">
+        <label>ID: </label>
+        <input type="text" th:field="*{studentId}" /><br/>
+
+        <label>First Name: </label>
+        <input type="text" th:field="*{firstName}" /><br/>
+
+        <label>Last Name: </label>
+        <input type="text" th:field="*{lastName}" /><br/>
+
+        <button type="submit">Add Student</button>
+    </form>
+
+    <a th:href="@{/students}">Back to Student List</a>
+
+</body>
+</html>
