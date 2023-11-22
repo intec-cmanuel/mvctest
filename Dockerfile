@@ -20,6 +20,9 @@ RUN ./gradlew --no-daemon build || return 0
 # Copy the entire project
 COPY . /app/
 
+# Grant execute permissions to the Gradle wrapper script
+RUN chmod +x /app/gradlew
+
 # Build the application
 RUN ./gradlew --no-daemon build
 
