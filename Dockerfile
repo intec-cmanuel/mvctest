@@ -11,6 +11,9 @@ COPY build.gradle settings.gradle /app/
 COPY gradlew /app/
 COPY gradle /app/gradle
 
+# Grant execute permissions to the Gradle wrapper script
+RUN chmod +x /app/gradlew
+
 # Download and resolve dependencies
 RUN ./gradlew --no-daemon build || return 0
 
