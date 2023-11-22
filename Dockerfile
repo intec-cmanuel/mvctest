@@ -2,26 +2,26 @@
 FROM openjdk:17-jdk-slim
 
 # Set the working directory in the container
-WORKDIR /app
+WORKDIR /MVCDeploymentDemo
 
 # Copy the build file(s) needed for dependency resolution
-COPY build.gradle settings.gradle /app/
+COPY build.gradle settings.gradle /MVCDeploymentDemo/
 
 # Copy the gradle wrapper files
-COPY gradlew /app/
-COPY gradle /app/gradle
+COPY gradlew /MVCDeploymentDemo/
+COPY gradle /MVCDeploymentDemo/gradle
 
 # Grant execute permissions to the Gradle wrapper script
-RUN chmod +x /app/gradlew
+RUN chmod +x /MVCDeploymentDemo/gradlew
 
 # Download and resolve dependencies
 RUN ./gradlew --no-daemon build || return 0
 
 # Copy the entire project
-COPY . /app/
+COPY . /MVCDeploymentDemo/
 
 # Grant execute permissions to the Gradle wrapper script
-RUN chmod +x /app/gradlew
+RUN chmod +x /MVCDeploymentDemo/gradlew
 
 # Build the application
 RUN ./gradlew --no-daemon build
