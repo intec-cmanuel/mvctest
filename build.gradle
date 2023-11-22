@@ -23,6 +23,10 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
+application {
+    mainClassName = 'be.intecbrussel.mvcdeploymentdemo.MvcDeploymentDemoApplication'
+}
+
 tasks.named('bootBuildImage') {
     builder = 'paketobuildpacks/builder-jammy-base:latest'
 }
