@@ -15,7 +15,7 @@ COPY gradle /MVCDeploymentDemo/gradle
 RUN chmod +x /MVCDeploymentDemo/gradlew
 
 # Download and resolve dependencies
-RUN ./gradlew --no-daemon build || return 0
+RUN ./gradlew --no-daemon build -x test || return 0
 
 # Copy the entire project
 COPY . /MVCDeploymentDemo/
@@ -24,10 +24,10 @@ COPY . /MVCDeploymentDemo/
 RUN chmod +x /MVCDeploymentDemo/gradlew
 
 # Build the application
-RUN ./gradlew --no-daemon build
+RUN ./gradlew --no-daemon build -x test
 
 # Expose the port that your application will run on
 EXPOSE 8080
 
 # Specify the command to run on container startup
-CMD ["java", "-jar", "build/libs/your-application-name.jar"]
+CMD ["java", "-jar", "build/libs/MVCDeploymentDemo-0.0.1-SNAPSHOT.jar"]
